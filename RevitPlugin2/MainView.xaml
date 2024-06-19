@@ -1,0 +1,48 @@
+﻿<Window x:Class="RevitPlugin2.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RevitPlugin2"
+             mc:Ignorable="d" 
+             d:DataContext="d:DesignInstance local:ViewModel"
+             d:DesignHeight="200" d:DesignWidth="450">
+    <DockPanel LastChildFill="True">
+        <!-- Top buttons panel -->
+        <Grid DockPanel.Dock="Bottom" Background="LightGray"> 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="Сохранить и обновить" />
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.9*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- Tree panel -->
+            <ListBox x:Name="ElementsGroups" Grid.Row="0">
+            <!-- TODO: CHECKBOXES -->
+            </ListBox>
+            <GridSplitter Grid.Row="1" ShowsPreview="False" Height="5"
+            HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" IsEditable="True">
+                    <TextBlock>Property1</TextBlock>
+                    <TextBlock>Property2</TextBlock>
+                    <TextBlock>Property3</TextBlock>
+                    <TextBlock>Property4</TextBlock>
+                </ComboBox>
+                <TextBox Grid.Column="1"></TextBox>
+            </Grid>
+        </Grid>
+    </DockPanel>
+
+</Window>

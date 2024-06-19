@@ -1,0 +1,11 @@
+﻿<RevitAddIns>
+	<AddIn Type="Command">
+		<Name>MyRevitPlugin</Name>
+		<Assembly>RevitPlugin2.dll</Assembly>
+		<AddInId>0EDB62D4-93E6-427A-8052-B90079791900</AddInId>
+		<FullClassName>RevitPlugin2.Command</FullClassName>
+		<Text>Спирюков А.В.</Text>
+		<VendorId>MyId</VendorId>
+		<VendorDescription>TestPlugin</VendorDescription>
+	</AddIn>
+</RevitAddIns>
