@@ -50,15 +50,10 @@ namespace RevitPlugin2
                     }
                 }
             }
-
-
         }
-
         // Команда изменения свойств
         private RevitCommand properyCommand;
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         public RevitCommand ProperyCommand(Func<object,bool> commandBinding_CanExecute)
         {
                 return properyCommand ??
