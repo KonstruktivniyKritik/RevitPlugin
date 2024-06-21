@@ -17,8 +17,13 @@ namespace RevitPlugin2
 {
     public class ViewModel : INotifyPropertyChanged
     {
-        public ViewModel(List<Element> elements)
+        private RevitApi RevitApi;
+        public ViewModel(RevitApi revitapi)
         {
+            RevitApi = revitapi;
+            var elements = new FilteredElementCollector(RevitApi.Document, RevitApi.Document.ActiveView.Id).
+            Cast<Element>().
+            ToList();
             CollectProperies(elements);
         }
         private List<Category> elementCategories = new List<Category>();

@@ -18,13 +18,8 @@ namespace RevitPlugin2
         static AddInId AddInId = new AddInId(new Guid("0EDB62D4-93E6-427A-8052-B90079791900"));
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            if (RevitApi.UiApplication == null)
-                RevitApi.Initialise(commandData);
-            //var reference = RevitApi.UIDocument.ActiveView..
-            var col = new FilteredElementCollector(RevitApi.Document, RevitApi.Document.ActiveView.Id).
-            Cast<Element>().
-            ToList();
-            var viewModel = new ViewModel(col);
+            RevitApi revitApi = new RevitApi(commandData);
+            var viewModel = new ViewModel(revitApi);
             var view = new MainView(viewModel);
             view.ShowDialog();
             return Result.Succeeded;
