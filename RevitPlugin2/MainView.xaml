@@ -8,14 +8,13 @@
              d:DataContext="d:DesignInstance local:ViewModel"
              d:DesignHeight="200" d:DesignWidth="450">
     <DockPanel LastChildFill="True">
-        <!-- Top buttons panel -->
         <Grid DockPanel.Dock="Bottom" Background="LightGray"> 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Content="Сохранить и обновить" />
+            <Button Grid.Column="1" Content="Сохранить и обновить" x:Name="PropertyButton"/>
         </Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -23,9 +22,18 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <!-- Tree panel -->
-            <ListBox x:Name="ElementsGroups" Grid.Row="0">
-            <!-- TODO: CHECKBOXES -->
+            <ListBox x:Name="ViewCategories" ItemsSource="{Binding ElementCategories}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" IsChecked ="{Binding Path=Checked}"/>
+                            <TextBlock Text="{Binding Path=Name}" />
+                            <TextBlock Text=" (" />
+                            <TextBlock Text="{Binding Path=CountOfElements}" />
+                            <TextBlock Text=")" />
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
             <GridSplitter Grid.Row="1" ShowsPreview="False" Height="5"
             HorizontalAlignment="Stretch" VerticalAlignment="Center" />
@@ -34,13 +42,8 @@
                     <ColumnDefinition Width="0.5*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" IsEditable="True">
-                    <TextBlock>Property1</TextBlock>
-                    <TextBlock>Property2</TextBlock>
-                    <TextBlock>Property3</TextBlock>
-                    <TextBlock>Property4</TextBlock>
-                </ComboBox>
-                <TextBox Grid.Column="1"></TextBox>
+                <ComboBox x:Name="ViewPropertyName" Grid.Column="0" IsEditable="True" SelectionChanged="PrepareParams" KeyUp="PrepareParams" />
+                <TextBox Grid.Column="1" x:Name ="ViewPropertyValue"  TextChanged="PrepareParams"/>
             </Grid>
         </Grid>
     </DockPanel>
